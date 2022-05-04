@@ -7,7 +7,7 @@ import Authentication from './pages/Authentication';
 export default () => {
   return (
     <Routes>
-      <Route path="/" element={<GlobalFeed />} exact />
+      <Route path="/" element={<GlobalFeed />} />
       <Route path="/login" element={<Authentication />} />
       <Route path="/register" element={<Authentication />} />
       <Route path="/article/:slug" element={<Article />} />

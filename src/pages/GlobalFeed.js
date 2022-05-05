@@ -4,6 +4,9 @@ import Feed from '../components/Feed';
 import Pagination from '../components/Pagination';
 import { getPaginator, limit } from '../utils';
 import { useLocation } from 'react-router-dom';
+import PopularTags from '../components/PopularTags';
+import Loading from '../components/Loading';
+import ErrorMessages from '../components/ErrorMessages';
 
 const GlobalFeed = () => {
   let location = useLocation();
@@ -26,8 +29,8 @@ const GlobalFeed = () => {
       <div className="container page">
         <div className="row">
           <div className="col-md-9">
-            {isLoading && <div>Loading...</div>}
-            {error && <div>Some error...</div>}
+            {isLoading && <Loading />}
+            {error && <ErrorMessages />}
             {!isLoading && response && (
               <>
                 <Feed articles={response.articles} />
@@ -40,7 +43,9 @@ const GlobalFeed = () => {
               </>
             )}
           </div>
-          <div className="col-md-3">Popular tag</div>
+          <div className="col-md-3">
+            <PopularTags />
+          </div>
         </div>
       </div>
     </div>

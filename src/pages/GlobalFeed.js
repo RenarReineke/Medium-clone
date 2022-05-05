@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import PopularTags from '../components/PopularTags';
 import Loading from '../components/Loading';
 import ErrorMessages from '../components/ErrorMessages';
+import FeedToggler from '../components/FeedToggler';
 
 const GlobalFeed = () => {
   let location = useLocation();
@@ -29,6 +30,7 @@ const GlobalFeed = () => {
       <div className="container page">
         <div className="row">
           <div className="col-md-9">
+            <FeedToggler tagName="foo" />
             {isLoading && <Loading />}
             {error && <ErrorMessages />}
             {!isLoading && response && (

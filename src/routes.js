@@ -14,7 +14,7 @@ export default () => {
       <Route path="/feed" element={<YourFeed />} />
       <Route path="/login" element={<Authentication />} />
       <Route path="/register" element={<Authentication />} />
-      <Route path="/article/:slug" element={<Article />} />
+      <Route path="/articles/:slug" element={<Article />} />
     </Routes>
   );
 };

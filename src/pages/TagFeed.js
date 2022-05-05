@@ -3,16 +3,18 @@ import useFetch from '../hooks/useFetch';
 import Feed from '../components/Feed';
 import Pagination from '../components/Pagination';
 import { getPaginator, limit } from '../utils';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import PopularTags from '../components/PopularTags';
 import Loading from '../components/Loading';
 import ErrorMessages from '../components/ErrorMessages';
 import FeedToggler from '../components/FeedToggler';
 
-const GlobalFeed = () => {
+const TagFeed = () => {
   let location = useLocation();
+  let params = useParams();
+
   const [currentPage, offset] = getPaginator(location.search);
-  const apiUrl = `/articles?limit=${limit}&offset=${offset}`;
+  const apiUrl = `/articles?limit=${limit}&offset=${offset}$tag=${params.slug}`;
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const GlobalFeed = () => {
       <div className="container page">
         <div className="row">
           <div className="col-md-9">
-            <FeedToggler />
+            <FeedToggler tagName={params.slug} />
             {isLoading && <Loading />}
             {error && <ErrorMessages />}
             {!isLoading && response && (
@@ -54,4 +56,4 @@ const GlobalFeed = () => {
   );
 };
 
-export default GlobalFeed;
+export default TagFeed;

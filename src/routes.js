@@ -5,6 +5,7 @@ import TagFeed from './pages/TagFeed';
 import YourFeed from './pages/YourFeed';
 import Article from './pages/Article';
 import Authentication from './pages/Authentication';
+import CreateArticle from './pages/CreateArticle';
 
 export default () => {
   return (
@@ -14,6 +15,7 @@ export default () => {
       <Route path="/feed" element={<YourFeed />} />
       <Route path="/login" element={<Authentication />} />
       <Route path="/register" element={<Authentication />} />
+      <Route path="/articles/new" element={<CreateArticle />} />
       <Route path="/articles/:slug" element={<Article />} />
     </Routes>
   );

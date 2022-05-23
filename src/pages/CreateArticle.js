@@ -6,6 +6,9 @@ import { CurrentUserContext } from '../contexts/currentUserContext';
 
 const CreateArticle = () => {
   const apiUrl = '/articles';
+  const navigate = useNavigate();
+  const [currentUserState] = useContext(CurrentUserContext);
+  const [isSuccessfullSubmit, setIsSuccessfullSubmit] = useState(false);
   const [{ response, error }, doFetch] = useFetch(apiUrl);
 
   const initialValues = {
@@ -15,9 +18,6 @@ const CreateArticle = () => {
     tagList: [],
   };
 
-  const [currentUserState] = useContext(CurrentUserContext);
-  const navigate = useNavigate;
-  const [isSuccessfullSubmit, setIsSuccessfullSubmit] = useState(false);
   const handleSubmit = (arcticle) => {
     doFetch({ method: 'post', data: { arcticle } });
   };

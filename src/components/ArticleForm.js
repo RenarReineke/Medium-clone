@@ -23,7 +23,7 @@ const ArticleForm = ({ onSubmit, errors, initialValues }) => {
     setTitle(initialValues.title);
     setBody(initialValues.body);
     setDescription(initialValues.description);
-    setTagList(initialValues.tagList.join(' '));
+    setTagList(initialValues.tagList?.join(' '));
   }, [initialValues]);
 
   return (

@@ -7,11 +7,13 @@ import Article from './pages/Article';
 import Authentication from './pages/Authentication';
 import CreateArticle from './pages/CreateArticle';
 import EditArticle from './pages/EditArticle';
+import Settings from './pages/Settings';
 
 export default () => {
   return (
     <Routes>
       <Route path="/" element={<GlobalFeed />} />
+      <Route path="/settings" element={<Settings />} />
       <Route path="/login" element={<Authentication />} />
       <Route path="/register" element={<Authentication />} />
       <Route path="/tags/:slug" element={<TagFeed />} />

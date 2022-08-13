@@ -2,12 +2,15 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useParams, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import UserArticles from './UserArticles';
 
 function UserProfile() {
   let params = useParams();
   let location = useLocation();
 
   const slug = params.slug;
+  //ToDo: проверить, откуда брать url
+  const url = params.url;
   const isFavorites = location.pathname.includes('favorites');
   const apiUrl = `/profiles/${slug}`;
   const [{ response }, doFetch] = useFetch();
@@ -56,7 +59,12 @@ function UserProfile() {
                 </li>
               </ul>
             </div>
-            User articles
+            <UserArticles
+              username={response.profile.username}
+              location={location}
+              isFavorites={isFavorites}
+              url={url}
+            />
           </div>
         </div>
       </div>

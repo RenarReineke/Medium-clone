@@ -16,9 +16,7 @@ export default (url) => {
   }, []);
 
   useEffect(() => {
-    if (!isLoading) {
-      return;
-    }
+    let scipGetResponseAfterDestroy = false;
     const requestOptions = {
       ...options,
       ...{
@@ -27,17 +25,24 @@ export default (url) => {
         },
       },
     };
+    if (!isLoading) {
+      return;
+    }
     axios(baseUrl + url, requestOptions)
       .then((res) => {
-        console.log('Fetch success', res);
-        setIsLoading(false);
-        setResponse(res.data);
+        if (!scipGetResponseAfterDestroy) {
+          setIsLoading(false);
+          setResponse(res.data);
+        }
       })
       .catch((error) => {
-        console.log('Fetch error', error);
-        setIsLoading(false);
-        setError(error.response.data);
+        if (!scipGetResponseAfterDestroy) {
+          setIsLoading(false);
+          setError(error.response.data);
+        }
       });
+
+    return () => (scipGetResponseAfterDestroy = true);
   }, [isLoading, token, options, url]);
 
   return [{ response, error, isLoading }, doFetch];

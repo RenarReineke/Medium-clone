@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Loading from '../components/Loading';
-import ErrorMessages from '../components/ErrorMessages';
+import Loading from './Loading';
+import ErrorMessages from './ErrorMessages';
 import useFetch from '../hooks/useFetch';
 import { Link } from 'react-router-dom';
 

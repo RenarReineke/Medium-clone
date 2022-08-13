@@ -8,11 +8,14 @@ import Authentication from './pages/Authentication';
 import CreateArticle from './pages/CreateArticle';
 import EditArticle from './pages/EditArticle';
 import Settings from './pages/Settings';
+import UserProfile from './pages/UserProfile';
 
 export default () => {
   return (
     <Routes>
       <Route path="/" element={<GlobalFeed />} />
+      <Route path="/profiles/:slug" element={<UserProfile />} />
+      <Route path="/profiles/:slug/favorites" element={<UserProfile />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/login" element={<Authentication />} />
       <Route path="/register" element={<Authentication />} />
